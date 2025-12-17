@@ -8,6 +8,16 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div id ="text"></div>
+    <button onclick="sendToFlutter()">Send Message to Flutter And Get Flutter Data</button>
+     <script type="text/javascript">
+        function sendToFlutter() {
+            window.flutterBridge.postMessage('Hello from JavaScript!');
+        }
+        function receiveFromFlutter(message) {
+            document.getElementById('text').innerText = message;
+        }
+    </script>
+    <!-- <script type="module" src="/src/main.js"></script> -->
   </body>
 </html>
