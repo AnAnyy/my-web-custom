@@ -8,16 +8,24 @@
   </head>
   <body>
     <div id="app"></div>
-    <div id ="text"></div>
-    <button onclick="sendToFlutter()">Send Message to Flutter And Get Flutter Data</button>
-     <script type="text/javascript">
+    <!-- <div id ="text"></div> -->
+    <!-- <button onclick="sendToFlutter()">Send Message to Flutter And Get Flutter Data</button> -->
+     <!-- <script type="text/javascript">
         function sendToFlutter() {
             window.flutterBridge.postMessage('Hello from JavaScript!');
         }
         function receiveFromFlutter(message) {
             document.getElementById('text').innerText = message;
         }
+    </script> -->
+    <script>
+       function receiveFromFlutter(message){
+         // 创建自定义事件并携带数据
+         const flutterEvent = new CustomEvent("updateVueData",{detail: message});
+         // 派发事件
+         window.dispatchEvent(flutterEvent);
+       }
     </script>
-    <!-- <script type="module" src="/src/main.js"></script> -->
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
